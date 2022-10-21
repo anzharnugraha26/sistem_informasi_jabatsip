@@ -27,6 +27,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('kabinet/tambah' , 'KabinetController@tambah');
     Route::get('kabinet/hapus/{id}' , 'KabinetController@delete');
     Route::post('kabinet/save', 'KabinetController@save');
+    //user
+    Route::get('user' , 'UserController@index');
 });
 
 

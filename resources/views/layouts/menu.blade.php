@@ -1,5 +1,5 @@
 <?php
-$data = ['surat*',  'kategori*' , 'kabinet*'];
+$data = ['surat*', 'kategori*', 'kabinet*', 'user*'];
 
 ?>
 
@@ -13,8 +13,7 @@ $data = ['surat*',  'kategori*' , 'kabinet*'];
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
-        </li><!-- End Dashboard Nav -->
-
+        </li>
         <li class="nav-item">
             <a class="{{ request()->is($data) ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#components-nav"
                 data-bs-toggle="collapse" href="#">
@@ -43,7 +42,7 @@ $data = ['surat*',  'kategori*' , 'kabinet*'];
                     </a>
                 </li>
                 <li>
-                    <a href="components-buttons.html">
+                    <a href="{{ url('user') }}" class="{{ request()->is('user*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Data User</span>
                     </a>
                 </li>
