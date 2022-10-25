@@ -11,7 +11,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ url('kabinet/tambah') }}" class="btn btn-primary  mt-3 mb-3"><i
+                            <a href="{{ url('user/tambah') }}" class="btn btn-primary  mt-3 mb-3"><i
                                     class="ri-add-box-fill"></i> Tambah Data</a>
                             <div class="table-responsive">
                                 <table class="table datatable table-striped " id="tabel-data">

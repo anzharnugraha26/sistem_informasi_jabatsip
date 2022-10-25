@@ -29,6 +29,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('kabinet/save', 'KabinetController@save');
     //user
     Route::get('user' , 'UserController@index');
+    Route::get('user/tambah' , 'UserController@tambah');
+    Route::post('user/store' , 'UserController@store');
 });
 
 
