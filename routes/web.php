@@ -14,7 +14,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('surat/hapus/{id}' , 'SuratController@delete');
     Route::get('surat/edit/{id}' , 'SuratController@edit');
     Route::post('surat/update' , 'SuratController@update');
-    Route::get('surat/detail/{id}' , 'SuratController@view');
+    Route::get('surat/detail/{id}' , 'SuratController@view'); 
     //kategori
     Route::get('kategori', 'KategoriController@index');
     Route::get('kategori/tambah', 'KategoriController@tambah');

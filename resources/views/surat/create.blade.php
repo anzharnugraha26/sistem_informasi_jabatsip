@@ -19,43 +19,43 @@
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-3 col-form-label">Tanggal Terima Surat</label>
                                     <div class="col-sm-9">
-                                        <input type="date" class="form-control" name="tanggal_terima">
+                                        <input type="date" class="form-control" name="tanggal_terima" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputEmail" class="col-sm-3 col-form-label">No Surat</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="no_surat">
+                                        <input type="text" class="form-control" name="no_surat" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-3 col-form-label">Tanggal Surat</label>
                                     <div class="col-sm-9">
-                                        <input type="date" class="form-control" name="tanggal_surat">
+                                        <input type="date" class="form-control" name="tanggal_surat" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputEmail" class="col-sm-3 col-form-label">Asal Surat</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="asal_surat">
+                                        <input type="text" class="form-control" name="asal_surat" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputEmail" class="col-sm-3 col-form-label">No Agenda TU Persip</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="agenda_persip">
+                                        <input type="text" class="form-control" name="agenda_persip" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputPassword" class="col-sm-3 col-form-label">Perihal Surat</label>
                                     <div class="col-sm-9">
-                                        <textarea class="form-control" style="height: 100px" name="perihal_surat"></textarea>
+                                        <textarea class="form-control" style="height: 100px" name="perihal_surat" required></textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputPassword" class="col-sm-3 col-form-label">Keterangan</label>
                                     <div class="col-sm-9">
-                                        <textarea class="form-control" style="height: 100px" name="keterangan"></textarea>
+                                        <textarea class="form-control" style="height: 100px" name="keterangan" required></textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -100,7 +100,7 @@
                                 <div class="row mb-3">
                                     <label for="inputNumber" class="col-sm-3 col-form-label">File Upload</label>
                                     <div class="col-sm-8">
-                                        <input class="form-control" type="file" id="formFile" name="file">
+                                        <input class="form-control" type="file" id="formFile" name="file" required>
                                     </div>
                                 </div>
 
