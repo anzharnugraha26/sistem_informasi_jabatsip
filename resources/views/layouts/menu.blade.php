@@ -49,7 +49,19 @@ $data = ['surat*', 'kategori*', 'kabinet*', 'user*'];
 
             </ul>
         </li><!-- End Components Nav -->
-
+        <li class="nav-item">
+            <a class="{{ request()->is('laporan') ? 'nav-link' : 'nav-link collapsed' }}" href="{{ url('laporan') }}">
+                <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                <span>Laporan</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="{{ request()->is('yj') ? 'nav-link' : 'nav-link collapsed' }}" href="{{ url('log-out') }}">
+                <i class="bi bi-box-arrow-left"></i>
+                <span>Logout</span>
+            </a>
+        </li>
+        
 
 
 
