@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\SuratMasuk;
 use Illuminate\Http\Request;
 
 class SuratMasukController extends Controller
 {
     public function index()
     {
-        return view('suratmasuk.index');
+        $data['surat_masuk'] = SuratMasuk::orderBy('id', 'DESC')->get();
+        return view('suratmasuk.index' , $data);
     }
 }
