@@ -36,11 +36,7 @@ $data = ['surat*', 'kategori*', 'kabinet*', 'user*'];
                         <i class="bi bi-circle"></i><span>Data Kabinet</span>
                     </a>
                 </li>
-                <li>
-                    <a href="components-breadcrumbs.html">
-                        <i class="bi bi-circle"></i><span>Data Peminjam</span>
-                    </a>
-                </li>
+
                 <li>
                     <a href="{{ url('user') }}" class="{{ request()->is('user*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Data User</span>
@@ -51,7 +47,7 @@ $data = ['surat*', 'kategori*', 'kabinet*', 'user*'];
         </li>
         <li class="nav-heading">Master Surat</li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="users-profile.html">
+            <a class="{{ request()->is('data-surat-masuk') ? 'nav-link' : 'nav-link collapsed' }} " href="{{ url('data-surat-masuk') }}">
                 <i class="bi bi-arrow-down-square-fill"></i>
                 <span>Data Surat Masuk</span>
             </a>

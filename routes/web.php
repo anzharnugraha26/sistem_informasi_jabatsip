@@ -34,6 +34,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('exportExcel', 'ExportExcelController@export');
     Route::get('laporan' , 'ExportExcelController@index');
+
+
+    Route::get('data-surat-masuk' , 'SuratMasukController@index');
 });
 
 
