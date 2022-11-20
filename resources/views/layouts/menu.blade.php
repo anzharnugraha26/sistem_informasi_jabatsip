@@ -48,7 +48,33 @@ $data = ['surat*', 'kategori*', 'kabinet*', 'user*'];
                 </li>
 
             </ul>
-        </li><!-- End Components Nav -->
+        </li>
+        <li class="nav-heading">Master Surat</li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="users-profile.html">
+                <i class="bi bi-arrow-down-square-fill"></i>
+                <span>Data Surat Masuk</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="users-profile.html">
+                <i class="bi bi-arrow-up-square-fill"></i>
+                <span>Data Surat Keluar</span>
+            </a>
+        </li>
+        <li class="nav-heading">Master Laporan</li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="users-profile.html">
+                <i class="bi bi-file-earmark-arrow-down-fill"></i>
+                <span>Laporan Surat Masuk</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="users-profile.html">
+                <i class="bi bi-file-earmark-arrow-up-fill"></i>
+                <span>Laporan Surat Keluar</span>
+            </a>
+        </li>
         <li class="nav-item">
             <a class="{{ request()->is('laporan') ? 'nav-link' : 'nav-link collapsed' }}" href="{{ url('laporan') }}">
                 <i class="bi bi-file-earmark-spreadsheet-fill"></i>
@@ -61,7 +87,7 @@ $data = ['surat*', 'kategori*', 'kabinet*', 'user*'];
                 <span>Logout</span>
             </a>
         </li>
-        
+
 
 
 
