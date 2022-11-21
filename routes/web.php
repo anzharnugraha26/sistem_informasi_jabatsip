@@ -39,6 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('data-surat-masuk' , 'SuratMasukController@index');
     Route::get('surat-masuk/hapus/{id}' , 'SuratMasukController@hapus');
     Route::post('save-surat-masuk' , 'SuratMasukController@save');
+
+    Route::get('data-surat-keluar' , 'SuratKeluarController@index');
 });
 
 
