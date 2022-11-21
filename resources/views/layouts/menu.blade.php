@@ -53,7 +53,7 @@ $data = ['surat*', 'kategori*', 'kabinet*', 'user*'];
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="users-profile.html">
+            <a class="{{ request()->is('data-surat-keluar') ? 'nav-link' : 'nav-link collapsed' }}" href="{{url('data-surat-keluar')}}">
                 <i class="bi bi-arrow-up-square-fill"></i>
                 <span>Data Surat Keluar</span>
             </a>
