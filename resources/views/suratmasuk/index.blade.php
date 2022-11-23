@@ -23,7 +23,7 @@
                                             <th scope="col">Asal Surat</th>
                                             <th scope="col">Perihal Surat</th>
                                             <th scope="col">Tanggal Terima</th>
-                                             
+
                                             <th scope="col">Aksi</th>
 
                                         </tr>
@@ -37,7 +37,7 @@
                                                 <td>{{ $item->asal_surat }}</td>
                                                 <td>{{ $item->perihal_surat }}</td>
                                                 <td>{{ $item->tgl_terima }}</td>
-                                                
+
                                                 <td colspan="3">
                                                     <a href="{{ url('surat-masuk/hapus/' . $item->id) }}"
                                                         onclick="return confirm('Are you sure, you want to delete it?')"
@@ -89,8 +89,11 @@
                                         <label for="inputText" class="mb-2"> <b>Klasifikasi Surat</b> </label>
                                         <select class="form-select" aria-label="Default select example"
                                             name="klasifikasi_surat">
-                                            <option value="Surat Masuk">Surat Masuk</option>
-                                            <option value="Surat Keluar">Surat Keluar</option>
+                                            <?php $kl = DB::table('kategori')->get(); ?>
+                                            @foreach ($kl as $i)
+                                                <option value="{{ $i->nama_kategori }}">{{ $i->nama_kategori }}</option>
+                                            @endforeach
+ 
                                         </select>
                                     </div>
                                     <div class="col-md-6 mb-2">
@@ -133,6 +136,16 @@
                                     </div>
                                     <div class="col-md-6 mb-2">
                                         <label for="inputText" class="mb-2"> <b>Kabinet</b> </label>
+                                        <select class="form-select" aria-label="Default select example" name="kabinet">
+                                            <?php $k = DB::table('kabinet')->get(); ?>
+                                            @foreach ($k as $i)
+                                                <option value="{{ $i->kode_kabinet }}">{{ $i->nama_kabinet }}</option>
+                                            @endforeach
+
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <label for="inputText" class="mb-2"> <b>Jenis Surat</b> </label>
                                         <select class="form-select" aria-label="Default select example" name="kabinet">
                                             <?php $k = DB::table('kabinet')->get(); ?>
                                             @foreach ($k as $i)

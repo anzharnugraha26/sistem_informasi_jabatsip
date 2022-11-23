@@ -1,5 +1,5 @@
 <?php
-$data = ['surat*', 'kategori*', 'kabinet*', 'user*'];
+$data = ['surat*', 'kategori*', 'kabinet*', 'user*' , 'jenis_surat*'];
 
 ?>
 
@@ -34,6 +34,12 @@ $data = ['surat*', 'kategori*', 'kabinet*', 'user*'];
                 <li>
                     <a href="{{ url('kabinet') }}" class="{{ request()->is('kabinet*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Data Kabinet</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url('jenis_surat') }}" class="{{ request()->is('jenis_surat*') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Jenis Surat</span>
                     </a>
                 </li>
 

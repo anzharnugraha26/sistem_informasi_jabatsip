@@ -44,6 +44,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('data-surat-keluar' , 'SuratKeluarController@index');
     Route::post('save-surat-keluar' , 'SuratKeluarController@save');
+
+    //jenissurat
+    Route::get('jenis_surat' , 'JenisSuratController@index');
 });
 
 

@@ -51,7 +51,6 @@ class ExportSurat implements FromCollection,  WithHeadings
             'Asal Surat',
             'Perihal surat',
             'Keterangan',
-
             'Sifat Surat',
             'Agenda Persip',
             'Kode Kabinet',
