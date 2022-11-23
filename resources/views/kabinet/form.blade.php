@@ -23,13 +23,13 @@
                                     <div class="row mb-3">
                                         <label for="inputText" class="col-sm-3 col-form-label">Kode Kabinet</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" name="kode_kabinet">
+                                            <input type="text" class="form-control" name="kode_kabinet" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <label for="inputEmail" class="col-sm-3 col-form-label">Nama Kabinet</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" name="nama_kabinet">
+                                            <input type="text" class="form-control" name="nama_kabinet" required>
                                         </div>
                                     </div>
 
@@ -55,26 +55,38 @@
 
                                 </form>
                             @else
-                                <form class="mt-5" method="POST" action="{{ url('kategori/update') }}"
+                                <form class="mt-5" method="POST" action="{{ url('kabinet/update') }}"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="row mb-3">
-                                        <input type="hidden" name="id" id="" value="{{ $k->id }}">
-                                        <label for="inputText" class="col-sm-3 col-form-label">Kode Kategori</label>
+                                        <label for="inputText" class="col-sm-3 col-form-label">Kode Kabinet</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" name="kode_kategori"
-                                                value="{{ $k->kode_kategori }}">
+                                            <input type="hidden" name="id" value="{{ $k->id }}">
+                                            <input type="text" class="form-control" name="kode_kabinet"
+                                                value="{{ $k->kode_kabinet }}" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label for="inputEmail" class="col-sm-3 col-form-label">Nama Kategori</label>
+                                        <label for="inputEmail" class="col-sm-3 col-form-label">Nama Kabinet</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" name="nama_kategori"
-                                                value="{{ $k->nama_kategori }}">
+                                            <input type="text" class="form-control" name="nama_kabinet"
+                                                value="{{ $k->nama_kabinet }}" required>
                                         </div>
                                     </div>
 
+                                    <div class="row mb-3">
+                                        <label class="col-sm-3 col-form-label">Slot</label>
+                                        <div class="col-sm-4">
+                                            <select class="form-select" aria-label="Default select example" name="slot">
+                                                <option disabled>Open this select menu</option>
+                                                <option value="A" {{ $k->slot == 'A' ? 'selected' : '' }}>A</option>
+                                                <option value="B" {{ $k->slot == 'B' ? 'selected' : '' }}>B</option>
+                                                <option value="C" {{ $k->slot == 'C' ? 'selected' : '' }}>C</option>
+                                                <option value="D" {{ $k->slot == 'D' ? 'selected' : '' }}>D</option>
 
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="row mb-3">
                                         <label class="col-sm-3 col-form-label"></label>
                                         <div class="col-sm-9">

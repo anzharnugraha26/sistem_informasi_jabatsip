@@ -25,8 +25,10 @@ Route::group(['middleware' => 'auth'], function () {
     //kabinet
     Route::get('kabinet', 'KabinetController@index');
     Route::get('kabinet/tambah', 'KabinetController@tambah');
+    Route::get('kabinet/edit/{id}', 'KabinetController@edit'); 
     Route::get('kabinet/hapus/{id}', 'KabinetController@delete');
     Route::post('kabinet/save', 'KabinetController@save');
+    Route::post('kabinet/update', 'KabinetController@update');
     //user
     Route::get('user', 'UserController@index');
     Route::get('user/tambah', 'UserController@tambah');
@@ -48,4 +50,4 @@ Route::group(['middleware' => 'auth'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/log-out', 'HomeController@logout')->name('home');
+Route::get('/log-out', 'HomeController@logout');
