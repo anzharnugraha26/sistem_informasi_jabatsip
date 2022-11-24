@@ -39,7 +39,7 @@
                                                     <a href="{{ url('user/delete/' . $i->id) }}"
                                                         onclick="return confirm('Are you sure, you want to delete it?')"
                                                         class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></a>
-                                                    <a href="{{ url('kategori/edit/' . $i->id) }}"
+                                                    <a href="{{ url('user/edit/' . $i->id) }}"
                                                         class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
 
                                                 </td>

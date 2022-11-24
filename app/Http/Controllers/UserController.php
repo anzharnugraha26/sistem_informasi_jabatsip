@@ -49,4 +49,36 @@ class UserController extends Controller
         User::where('id', $id)->delete();
         return redirect()->back();
     }
+
+    public function edit($id)
+    {
+        $data['flag'] = 1;
+        $data['user'] = User::where('id', $id)->first();
+        return view('user.form', $data);
+    }
+
+    public function update(Request $request)
+    {
+        $u = User::where('id', $request->id)->first();
+        
+
+        if ($request->c_password == 0) {
+            User::where('id', $request->id)->update([
+                'name' => $request['name'],
+                'username' => $request['username'],
+                'kode_user' => $request['kode_user'],
+                'email' => $request['email'],
+                'password' => $u->password,
+            ]);
+        } else {
+            User::where('id', $request->id)->update([
+                'name' => $request['name'],
+                'username' => $request['username'],
+                'kode_user' => $request['kode_user'],
+                'email' => $request['email'],
+                'password' =>  Hash::make($request['password']),
+            ]);
+        }
+        return redirect('/user');
+    }
 }
