@@ -15,6 +15,10 @@ class SuratMasukController extends Controller
 
     public function save(Request $request)
     {
+        $this->validate($request, [
+            'file' => 'required|mimes:jpg,png,jpeg,pdf|max:2048'
+        ]);
+
         $fileName = '';
         if ($request->file != null) {
             if ($request->file->getClientOriginalName()) {
@@ -23,6 +27,9 @@ class SuratMasukController extends Controller
                 $request->file->move('image/file', $fileName);
             }
         }
+
+        $extension = $request->file->getClientOriginalExtension();
+
         SuratMasuk::create([
             'no_surat_masuk' => $request->no_surat_masuk,
             'no_agenda' => $request->no_agenda,
@@ -33,7 +40,9 @@ class SuratMasukController extends Controller
             'sifat_surat' => $request->sifat_surat,
             'tgl_surat' => $request->tgl_surat,
             'tgl_terima' => $request->tgl_terima,
-            'kabinet' => $request->kabinet
+            'kabinet' => $request->kabinet,
+            'jenis_surat' => $request->jenis_surat,
+            'jenis_file' => $extension
         ]);
 
         return redirect()->back();
@@ -41,7 +50,7 @@ class SuratMasukController extends Controller
 
     public function hapus($id)
     {
-        SuratMasuk::where('id' , $id)->delete();
+        SuratMasuk::where('id', $id)->delete();
         return redirect()->back();
     }
 }
