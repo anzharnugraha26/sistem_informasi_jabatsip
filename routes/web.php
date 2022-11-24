@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     //user
     Route::get('user', 'UserController@index');
     Route::get('user/tambah', 'UserController@tambah');
+    Route::get('user/delete/{id}', 'UserController@delete');
     Route::post('user/store', 'UserController@store');
 
     Route::get('exportExcel', 'ExportExcelController@export');

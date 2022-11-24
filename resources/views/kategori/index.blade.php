@@ -2,7 +2,7 @@
 @section('content')
     <main id="main" class="main">
         <div class="pagetitle">
-            <h1>Data Kategori</h1>
+            <h1>Data Klasifikasi</h1>
 
         </div>
         <section class="section">

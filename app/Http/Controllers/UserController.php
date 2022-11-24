@@ -33,7 +33,7 @@ class UserController extends Controller
         ]);
 
 
-        return User::create([
+        User::create([
             'name' => $request['name'],
             'username' => $request['username'],
             'kode_user' => $request['kode_user'],
@@ -41,6 +41,12 @@ class UserController extends Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return redirect('user');
+        return redirect('/user');
+    }
+
+    public function delete($id)
+    {
+        User::where('id', $id)->delete();
+        return redirect()->back();
     }
 }
