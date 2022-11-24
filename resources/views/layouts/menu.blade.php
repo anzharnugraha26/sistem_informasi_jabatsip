@@ -53,7 +53,7 @@ $data = ['surat*', 'kategori*', 'kabinet*', 'user*' , 'jenis_surat*'];
         </li>
         <li class="nav-heading">Master Surat</li>
         <li class="nav-item">
-            <a class="{{ request()->is('data-surat-masuk') ? 'nav-link' : 'nav-link collapsed' }} " href="{{ url('data-surat-masuk') }}">
+            <a class="{{ request()->is('data-surat-masuk*') ? 'nav-link' : 'nav-link collapsed' }} " href="{{ url('data-surat-masuk') }}">
                 <i class="bi bi-arrow-down-square-fill"></i>
                 <span>Data Surat Masuk</span>
             </a>

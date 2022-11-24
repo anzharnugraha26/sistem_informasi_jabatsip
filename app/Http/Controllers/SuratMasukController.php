@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\SuratMasuk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SuratMasukController extends Controller
 {
@@ -52,5 +53,17 @@ class SuratMasukController extends Controller
     {
         SuratMasuk::where('id', $id)->delete();
         return redirect()->back();
+    }
+
+    public function view($id)
+    {
+        $s = DB::table('surat_masuks as surat')
+            ->where('surat.id', $id)
+            ->join('kabinet', 'surat.kabinet', '=', 'kabinet.id')
+            ->join('jenis_surats as jenis', 'surat.jenis_surat', '=', 'jenis.id')
+            ->select('surat.*', 'jenis.nama_jenis as jenis_surat', 'kabinet.kode_kabinet', 'kabinet.nama_kabinet', 'kabinet.slot')
+            ->first();
+
+       return view('suratmasuk.detail' , compact('s'));
     }
 }

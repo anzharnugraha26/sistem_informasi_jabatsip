@@ -44,7 +44,7 @@
                                                         class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></a>
                                                     <a href="{{ url('surat/edit/' . $item->id) }}"
                                                         class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
-                                                    <a href="{{ url('surat/detail/' . $item->id) }}"
+                                                    <a href="{{ url('data-surat-masuk/view/' . $item->id) }}"
                                                         class="btn btn-primary btn-sm"><i class="bi bi-eye-fill"></i></a>
 
                                                 </td>
