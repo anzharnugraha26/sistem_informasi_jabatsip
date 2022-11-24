@@ -54,7 +54,7 @@
                         data-bs-toggle="dropdown">
                         {{-- <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> --}}
                         <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->username }}</span>
-                    </a> 
+                    </a>
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
@@ -127,7 +127,7 @@
 
     <!-- Vendor JS Files -->
     @include('layouts.js')
-
+    @yield('script')
 </body>
 
 </html>

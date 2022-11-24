@@ -47,6 +47,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //jenissurat
     Route::get('jenis_surat' , 'JenisSuratController@index');
+    Route::get('jenis_surat/hapus/{id}' , 'JenisSuratController@delete');
+    Route::post('jenis_surat/save' , 'JenisSuratController@save');
+    Route::post('jenis_surat/update' , 'JenisSuratController@update');
 });
 
 
