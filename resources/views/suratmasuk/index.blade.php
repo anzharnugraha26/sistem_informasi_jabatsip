@@ -42,8 +42,10 @@
                                                     <a href="{{ url('surat-masuk/hapus/' . $item->id) }}"
                                                         onclick="return confirm('Are you sure, you want to delete it?')"
                                                         class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></a>
-                                                    <a href="{{ url('surat/edit/' . $item->id) }}"
-                                                        class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
+                                                    <a href="#" data-id="{{ $item->id }}"
+                                                        data-url="{{ url('edit-surat-masuk/' . $item->id) }}"
+                                                        class="btn btn-success btn-sm" id="editBtn" data-toggle="modal"
+                                                        data-target=".edit"><i class="bi bi-pencil"></i></a>
                                                     <a href="{{ url('data-surat-masuk/view/' . $item->id) }}"
                                                         class="btn btn-primary btn-sm"><i class="bi bi-eye-fill"></i></a>
 
@@ -137,7 +139,8 @@
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="sifat_surat"
-                                                value="biasa" id="flexRadioDefault2" {{ old('sifat_surat') == 'biasa' ? 'checked' : '' }} >
+                                                value="biasa" id="flexRadioDefault2"
+                                                {{ old('sifat_surat') == 'biasa' ? 'checked' : '' }}>
                                             <label class="form-check-label" for="flexRadioDefault2">
                                                 Biasa
                                             </label>
@@ -148,7 +151,9 @@
                                         <select class="form-select" aria-label="Default select example" name="kabinet">
                                             <?php $k = DB::table('kabinet')->get(); ?>
                                             @foreach ($k as $i)
-                                                <option value="{{ $i->id }}"  {{ old('kabinet') == $i->id ? 'selected' : '' }} >{{ $i->nama_kabinet }} -
+                                                <option value="{{ $i->id }}"
+                                                    {{ old('kabinet') == $i->id ? 'selected' : '' }}>
+                                                    {{ $i->nama_kabinet }} -
                                                     {{ $i->slot }}</option>
                                             @endforeach
 
@@ -160,7 +165,9 @@
                                             name="jenis_surat">
                                             <?php $k = DB::table('jenis_surats')->get(); ?>
                                             @foreach ($k as $i)
-                                                <option value="{{ $i->id }}"  {{ old('jenis_surat') == $i->id ? 'selected' : '' }}>{{ $i->nama_jenis }}</option>
+                                                <option value="{{ $i->id }}"
+                                                    {{ old('jenis_surat') == $i->id ? 'selected' : '' }}>
+                                                    {{ $i->nama_jenis }}</option>
                                             @endforeach
 
                                         </select>
@@ -186,6 +193,33 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade bd-example-modal-lg edit" tabindex="-1" role="dialog"
+                aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Surat Masuk</h5>
+                            <a type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </a>
+                        </div>
+                        <form action="{{ url('save-surat-masuk') }}" enctype="multipart/form-data" method="POST">
+                            @csrf
+                            <div class="modal-body">
+                                <div id="contenedit">
+
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                        class="bi bi-x-circle"></i> Batal</button>
+                                <button class="btn btn-success"><i class="bi bi-box-arrow-down"></i>
+                                    Update</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 @endsection
@@ -195,4 +229,24 @@
             alert("file hanya bisa berbentuk , pdf, jpeg, jpg, png")
         </script>
     @endif
+    <script>
+        $(document).ready(function() {
+
+            $('body').on('click', '#editBtn', function() {
+                var id = $(this).data('id');
+                var url = "edit-surat-masuk/" + id;
+                console.log(id)
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    chace: false,
+                    // dataType: 'json',
+                    success: function(data) {
+                        // console.log(data)
+                        document.getElementById("contenedit").innerHTML = data;
+                    }
+                });
+            })
+        })
+    </script>
 @endsection

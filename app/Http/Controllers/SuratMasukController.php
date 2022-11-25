@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\SuratMasuk;
+use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class SuratMasukController extends Controller
 {
@@ -64,6 +67,30 @@ class SuratMasukController extends Controller
             ->select('surat.*', 'jenis.nama_jenis as jenis_surat', 'kabinet.kode_kabinet', 'kabinet.nama_kabinet', 'kabinet.slot')
             ->first();
 
-       return view('suratmasuk.detail' , compact('s'));
+        return view('suratmasuk.detail', compact('s'));
+    }
+
+    public function download($id)
+    {
+        $s = SuratMasuk::where('id', $id)->first();
+        $file = public_path() . "/image/file/" . $s->file;
+        $headers = array(
+            'Content-Type: application/' . $s->jenis_file,
+        );
+
+        $name = $s->file;
+        return response()->download($file, $name, $headers);
+    }
+
+    public function edit($id)
+    {
+        $s = DB::table('surat_masuks as surat')
+            ->where('surat.id', $id)
+            ->join('kabinet', 'surat.kabinet', '=', 'kabinet.id')
+            ->join('jenis_surats as jenis', 'surat.jenis_surat', '=', 'jenis.id')
+            ->select('surat.*', 'jenis.nama_jenis as jenis_surat', 'kabinet.kode_kabinet', 'kabinet.nama_kabinet', 'kabinet.slot')
+            ->first();
+
+      return view('suratmasuk.edit' , compact('s'));
     }
 }

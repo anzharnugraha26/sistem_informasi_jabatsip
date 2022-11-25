@@ -69,11 +69,22 @@
                                         <td>File</td>
                                         <td>:</td>
                                         <td>
-                                            @if ($s->jenis_file == 'pdf')
-                                                {{ $s->file }}
-                                            @else
-                                                <img src="{{asset('image/file/' . $s->file)}}" alt="" style="width: 500px;height: 500px;">
-                                            @endif
+                                            <div>
+                                                @if ($s->jenis_file == 'pdf')
+                                                    {{ $s->file }}
+                                                @else
+                                                    <img src="{{ asset('image/file/' . $s->file) }}" alt=""
+                                                        style="width: 500px;height: 500px;">
+                                                @endif
+                                            </div>
+                                            <div class="mt-3">
+                                                <a href="{{ url('download/file/' . $s->id) }}"
+                                                    class="btn btn-primary btn-sm"> <i class="bi bi-download"></i> Download
+                                                    File</a>
+                                                <a href="{{ asset('image/file/' . $s->file) }}" target="_blank"
+                                                    class="btn btn-success btn-sm"> <i class="bi bi-eye-fill"></i> View
+                                                    File</a>
+                                            </div>
                                         </td>
                                     </tr>
                                 </table>
