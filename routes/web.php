@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('download/file/{id}' , 'SuratMasukController@download');
     Route::get('edit-surat-masuk/{id}' , 'SuratMasukController@edit');
     Route::post('save-surat-masuk' , 'SuratMasukController@save');
+    Route::post('update-surat-masuk' , 'SuratMasukController@update');
 
     Route::get('data-surat-keluar' , 'SuratKeluarController@index');
     Route::post('save-surat-keluar' , 'SuratKeluarController@save');

@@ -203,20 +203,17 @@
                                 <span aria-hidden="true">&times;</span>
                             </a>
                         </div>
-                        <form action="{{ url('save-surat-masuk') }}" enctype="multipart/form-data" method="POST">
-                            @csrf
-                            <div class="modal-body">
-                                <div id="contenedit">
 
-                                </div>
+                        <div class="modal-body">
+                            <div id="contenedit">
 
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
-                                        class="bi bi-x-circle"></i> Batal</button>
-                                <button class="btn btn-success"><i class="bi bi-box-arrow-down"></i>
-                                    Update</button>
-                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -225,6 +222,11 @@
 @endsection
 @section('script')
     @if ($errors->has('file'))
+        <script>
+            alert("file hanya bisa berbentuk , pdf, jpeg, jpg, png")
+        </script>
+    @endif
+    @if ($errors->has('file_baru'))
         <script>
             alert("file hanya bisa berbentuk , pdf, jpeg, jpg, png")
         </script>
@@ -248,5 +250,9 @@
                 });
             })
         })
+
+        function hideDivFile(id, elementValue) {
+            document.getElementById(id).style.display = elementValue.value == 1 ? 'block' : 'none';
+        }
     </script>
 @endsection
