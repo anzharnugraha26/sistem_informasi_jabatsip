@@ -65,7 +65,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //
     Route::get('laporan-surat-masuk' , 'ExportExcelController@suratmasuk');
+    Route::get('laporan-surat-keluar' , 'ExportExcelController@suratkeluar');
     Route::get('export-surat-masuk' , 'ExportExcelController@exportSuratMasuk');
+    Route::get('export-surat-keluar' , 'ExportExcelController@exportSuratKeluar');
 });
 
 

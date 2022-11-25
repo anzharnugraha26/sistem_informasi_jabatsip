@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Nov 2022 pada 04.17
+-- Waktu pembuatan: 25 Nov 2022 pada 05.00
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.34
 
@@ -39,6 +39,28 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `jenis_surats`
+--
+
+CREATE TABLE `jenis_surats` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama_jenis` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `jenis_surats`
+--
+
+INSERT INTO `jenis_surats` (`id`, `nama_jenis`, `created_at`, `updated_at`) VALUES
+(1, 'Surat edaran', '2022-11-23 03:56:34', '2022-11-23 03:56:34'),
+(2, 'Surat telegram', '2022-11-23 03:56:51', '2022-11-23 03:56:51'),
+(3, 'Surat perintah', '2022-11-23 03:57:07', '2022-11-24 01:59:51');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `kabinet`
 --
 
@@ -56,9 +78,8 @@ CREATE TABLE `kabinet` (
 INSERT INTO `kabinet` (`id`, `kode_kabinet`, `nama_kabinet`, `slot`) VALUES
 (1, 'L-1', 'Lemari 1', 'A'),
 (2, 'L-2', 'Lemari 1', 'B'),
-(5, 'L-5', 'Lemari 1', 'C'),
 (6, 'L-6', 'Lemari 1', 'D'),
-(7, 'L-7', 'Lemari 2', 'A');
+(7, 'L-7', 'Lemari 2', 'B');
 
 -- --------------------------------------------------------
 
@@ -77,8 +98,8 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`id`, `kode_kategori`, `nama_kategori`) VALUES
-(1, 'K-1', 'Surat Masuk 1'),
-(2, 'K-1', 'Surat Masuk');
+(1, 'K-1', 'Surat Masuk'),
+(2, 'K-2', 'Surat Keluar');
 
 -- --------------------------------------------------------
 
@@ -101,7 +122,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2022_11_20_110438_create_surat_masuks_table', 2),
-(5, '2022_11_21_020812_create_surat_keluars_table', 3);
+(5, '2022_11_21_020812_create_surat_keluars_table', 3),
+(6, '2022_11_23_103644_create_jenis_surats_table', 4);
 
 -- --------------------------------------------------------
 
@@ -161,11 +183,13 @@ CREATE TABLE `surat_keluars` (
   `tujuan_surat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `perihal_surat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_file` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `klasifikasi_surat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sifat_surat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_surat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_terima` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kabinet` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_surat` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -174,8 +198,8 @@ CREATE TABLE `surat_keluars` (
 -- Dumping data untuk tabel `surat_keluars`
 --
 
-INSERT INTO `surat_keluars` (`id`, `no_surat_keluar`, `no_agenda`, `tujuan_surat`, `perihal_surat`, `file`, `klasifikasi_surat`, `sifat_surat`, `tgl_surat`, `tgl_terima`, `kabinet`, `created_at`, `updated_at`) VALUES
-(1, 'sa1', '21112', '2wqww', 'sasas                                        saas', '112022210209220_Gull_portrait_ca_usa.jpg', 'Surat Keluar', 'rahasia', '2022-11-21', '2022-11-21', 'L-2', '2022-11-20 19:18:09', '2022-11-20 19:18:09');
+INSERT INTO `surat_keluars` (`id`, `no_surat_keluar`, `no_agenda`, `tujuan_surat`, `perihal_surat`, `file`, `jenis_file`, `klasifikasi_surat`, `sifat_surat`, `tgl_surat`, `tgl_terima`, `kabinet`, `jenis_surat`, `created_at`, `updated_at`) VALUES
+(4, 'qw', '121313', 'sasasa', 'qs', '112022251053513_112022241015905_MenuMasterData.pdf', 'pdf', 'Surat Keluar', 'biasa', '2022-11-25', '2022-11-25', '2', '2', '2022-11-25 03:12:29', '2022-11-25 03:23:53');
 
 -- --------------------------------------------------------
 
@@ -190,11 +214,13 @@ CREATE TABLE `surat_masuks` (
   `asal_surat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `perihal_surat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_file` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `klasifikasi_surat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sifat_surat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_surat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_terima` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kabinet` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_surat` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -203,8 +229,9 @@ CREATE TABLE `surat_masuks` (
 -- Dumping data untuk tabel `surat_masuks`
 --
 
-INSERT INTO `surat_masuks` (`id`, `no_surat_masuk`, `no_agenda`, `asal_surat`, `perihal_surat`, `file`, `klasifikasi_surat`, `sifat_surat`, `tgl_surat`, `tgl_terima`, `kabinet`, `created_at`, `updated_at`) VALUES
-(2, 'sasas', 'sasa', 'sasas', 'sasas', '112022201228869_Gull_portrait_ca_usa.jpg', 'Surat Keluar', 'rahasia', '2022-11-04', '2022-11-08', 'L-2', '2022-11-20 05:31:28', '2022-11-20 05:31:28');
+INSERT INTO `surat_masuks` (`id`, `no_surat_masuk`, `no_agenda`, `asal_surat`, `perihal_surat`, `file`, `jenis_file`, `klasifikasi_surat`, `sifat_surat`, `tgl_surat`, `tgl_terima`, `kabinet`, `jenis_surat`, `created_at`, `updated_at`) VALUES
+(5, 'h000001111', '121313', 'sas', 'sa', '112022250957189_112022241015905_MenuMasterData.pdf', 'pdf', 'Surat Keluar', 'biasa', '2022-11-24', '2022-11-24', '6', '1', '2022-11-24 03:51:15', '2022-11-25 02:44:00'),
+(6, 'h-12-2121-0000', '121313', 'sas', 'sass', '112022241142769_Gull_portrait_ca_usa.jpg', 'jpg', 'Surat Masuk', 'biasa', '2022-11-24', '2022-11-24', '1', '1', '2022-11-24 04:25:42', '2022-11-24 04:25:42');
 
 -- --------------------------------------------------------
 
@@ -230,8 +257,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `kode_user`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'anzhar', 'anzharnugraha', '121212', 'anzhar@laravel.com', NULL, '$2y$10$8zqNOELgqG0.4E6jXxs4ReMoeb7aLcZwMJ8ArzbCBgY3WuTFUb2jG', '4zXyP9d5wAqvEkzBxhjmfJzaFpwk51PwFoTV0VNPo2EIBQFtWcHv1nch1lsG', '2022-10-17 19:09:45', '2022-10-17 19:09:45'),
-(2, 'test', 'test', '0012', 'test@gmail.com', NULL, '$2y$10$x1BgTsX01cLh/lS2nHIom.LKm/gH2faZ1my9hzR9FcJEu8o2ogKJ6', NULL, '2022-11-08 19:42:22', '2022-11-08 19:42:22');
+(1, 'anzhar', 'anzharnugraha', '121212', 'anzhar@laravel.com', NULL, '$2y$10$8zqNOELgqG0.4E6jXxs4ReMoeb7aLcZwMJ8ArzbCBgY3WuTFUb2jG', 'xD05aMRQikeyx50h5T60wPlgYhh6TpPzzGqVal9xGVhJI2tDyhGGlASkVG6L', '2022-10-17 19:09:45', '2022-10-17 19:09:45'),
+(2, 'test', 'test', '0012', 'test@gmail.com', NULL, '$2y$10$x1BgTsX01cLh/lS2nHIom.LKm/gH2faZ1my9hzR9FcJEu8o2ogKJ6', NULL, '2022-11-08 19:42:22', '2022-11-08 19:42:22'),
+(6, 'test', 'K0001', '12', 'test.anzhar@gmail.com', NULL, '$2y$10$Q9XIwa76DLUDTr3aWmPMbOGSnEg.qFMQvzv1Hb1uGkXzVkUdGKzaC', 'vSvEJwI8uZ8CW0mvbA9jdqBxsMIo9R61pKaulyClhj9FZW1pUrmStVDb49lz', '2022-11-24 02:09:22', '2022-11-24 02:40:07');
 
 --
 -- Indexes for dumped tables
@@ -241,6 +269,12 @@ INSERT INTO `users` (`id`, `name`, `username`, `kode_user`, `email`, `email_veri
 -- Indeks untuk tabel `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `jenis_surats`
+--
+ALTER TABLE `jenis_surats`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -315,6 +349,12 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `jenis_surats`
+--
+ALTER TABLE `jenis_surats`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT untuk tabel `kabinet`
 --
 ALTER TABLE `kabinet`
@@ -330,7 +370,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `surat`
@@ -342,19 +382,19 @@ ALTER TABLE `surat`
 -- AUTO_INCREMENT untuk tabel `surat_keluars`
 --
 ALTER TABLE `surat_keluars`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `surat_masuks`
 --
 ALTER TABLE `surat_masuks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

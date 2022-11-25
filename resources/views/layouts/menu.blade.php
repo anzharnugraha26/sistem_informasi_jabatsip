@@ -72,17 +72,17 @@ $data = ['surat*', 'kategori*', 'kabinet*', 'user*' , 'jenis_surat*'];
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="users-profile.html">
+            <a class="{{ request()->is('laporan-surat-keluar') ? 'nav-link' : 'nav-link collapsed' }}" href="{{url('laporan-surat-keluar')}}">
                 <i class="bi bi-file-earmark-arrow-up-fill"></i>
                 <span>Laporan Surat Keluar</span>
             </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="{{ request()->is('laporan') ? 'nav-link' : 'nav-link collapsed' }}" href="{{ url('laporan') }}">
                 <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                 <span>Laporan</span>
             </a>
-        </li>
+        </li> --}}
         <li class="nav-item">
             <a class="{{ request()->is('yj') ? 'nav-link' : 'nav-link collapsed' }}" href="{{ url('log-out') }}">
                 <i class="bi bi-box-arrow-left"></i>

@@ -5,8 +5,9 @@ namespace App\Exports;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Events\AfterSheet;
 
-class ExportSuratMasuk implements FromCollection ,  WithHeadings
+class ExportSuratKeluar implements FromCollection,  WithHeadings
 {
     private $date1;
     private $date2;
@@ -19,7 +20,7 @@ class ExportSuratMasuk implements FromCollection ,  WithHeadings
 
     public function collection()
     {
-        $records = DB::table('surat_masuks as surat')->select('*')
+        $records = DB::table('surat_keluars as surat')->select('*')
             ->where('surat.tgl_surat', '>=', $this->date1)
             ->where('surat.tgl_surat', '<=', $this->date2)
             ->join('kabinet', 'surat.kabinet', '=', 'kabinet.id')
@@ -30,9 +31,10 @@ class ExportSuratMasuk implements FromCollection ,  WithHeadings
         $result = array();
         foreach ($records as $record) {
             $result[] = array(
-                'no_surat' => $record->no_surat_masuk,
+
+                'no_surat' => $record->no_surat_keluar,
                 'no_agenda' => $record->no_agenda,
-                'asal_surat' => $record->asal_surat,
+                'asal_surat' => $record->tujuan_surat,
                 'perihal_surat' => $record->perihal_surat,
                 'klasifikasi_surat' => $record->klasifikasi_surat,
                 'sifat_surat' => $record->sifat_surat,
@@ -44,12 +46,15 @@ class ExportSuratMasuk implements FromCollection ,  WithHeadings
             );
         }
 
+
+
         return collect($result);
     }
 
     public function headings(): array
     {
         return [
+
             'No Surat',
             'No Agenda',
             'Asal Surat',
@@ -63,4 +68,6 @@ class ExportSuratMasuk implements FromCollection ,  WithHeadings
             'Jenis_surat',
         ];
     }
+
+     
 }
