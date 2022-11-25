@@ -17,7 +17,7 @@ class ExportSurat implements FromCollection,  WithHeadings
     {
         $this->date1 = $date1;
         $this->date2 = $date2;
-    }
+    } 
 
     public function collection()
     {
