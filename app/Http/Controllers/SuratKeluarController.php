@@ -80,4 +80,49 @@ class SuratKeluarController extends Controller
         $name = $s->file;
         return response()->download($file, $name, $headers);
     }
+
+    public function edit($id)
+    {
+        $s = SuratKeluar::where('id', $id)->first();
+
+        return view('suratkeluar.edit', compact('s'));
+    }
+
+    public function update(Request $request)
+    {
+        $this->validate($request, [
+            'file_baru' => 'mimes:jpg,png,jpeg,pdf|max:2048'
+        ]);
+        $datalama = SuratKeluar::where('id', $request->id)->first();
+        if ($request->c_file == 1) {
+            $fileName = '';
+            if ($request->file_baru != null) {
+                if ($request->file_baru->getClientOriginalName()) {
+                    $file = str_replace(' ', '', $request->file_baru->getClientOriginalName());
+                    $fileName = date('mYdHs') . rand(1, 999) . '_' . $file;
+                    $request->file_baru->move('image/file', $fileName);
+                }
+            }
+            $extension = $request->file_baru->getClientOriginalExtension();
+        } else {
+            $fileName = $datalama->file;
+            $extension = $datalama->jenis_file;
+        }
+        SuratKeluar::where('id', $request->id)->update([
+            'no_surat_keluar' => $request->no_surat_masuk,
+            'no_agenda' => $request->no_agenda,
+            'tujuan_surat' => $request->asal_surat,
+            'perihal_surat' => $request->perihal_surat,
+            'file' => $fileName,
+            'klasifikasi_surat' => $request->klasifikasi_surat,
+            'sifat_surat' => $request->sifat_surat,
+            'tgl_surat' => $request->tgl_surat,
+            'tgl_terima' => $request->tgl_terima,
+            'kabinet' => $request->kabinet,
+            'jenis_surat' => $request->jenis_surat,
+            'jenis_file' => $extension
+        ]);
+
+        return redirect()->back();
+    }
 }

@@ -42,8 +42,10 @@
                                                     <a href="{{ url('surat-keluar/hapus/' . $item->id) }}"
                                                         onclick="return confirm('Are you sure, you want to delete it?')"
                                                         class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></a>
-                                                    <a href="{{ url('surat/edit/' . $item->id) }}"
-                                                        class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
+                                                    <a href="#" data-id="{{ $item->id }}"
+                                                        class="btn btn-success btn-sm" id="editBtn" data-toggle="modal"
+                                                        data-target=".edit" class="btn btn-success btn-sm"><i
+                                                            class="bi bi-pencil"></i></a>
                                                     <a href="{{ url('data-surat-keluar/view/' . $item->id) }}"
                                                         class="btn btn-primary btn-sm"><i class="bi bi-eye-fill"></i></a>
 
@@ -192,6 +194,30 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade bd-example-modal-lg edit" tabindex="-1" role="dialog"
+                aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Surat Masuk</h5>
+                            <a type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </a>
+                        </div>
+
+                        <div class="modal-body">
+                            <div id="contenedit">
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 @endsection
@@ -206,4 +232,27 @@
             alert("file hanya bisa berbentuk , pdf, jpeg, jpg, png")
         </script>
     @endif
+    <script>
+        $(document).ready(function() {
+
+            $('body').on('click', '#editBtn', function() {
+                var id = $(this).data('id');
+                var url = "edit-surat-keluar/" + id;
+                console.log(id)
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    chace: false,
+                    // dataType: 'json',
+                    success: function(data) {
+                        // console.log(data)
+                        document.getElementById("contenedit").innerHTML = data;
+                    }
+                });
+            })
+        })
+        function hideDivFile(id, elementValue) {
+            document.getElementById(id).style.display = elementValue.value == 1 ? 'block' : 'none';
+        }
+    </script>
 @endsection

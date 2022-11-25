@@ -43,7 +43,7 @@
                                                         onclick="return confirm('Are you sure, you want to delete it?')"
                                                         class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></a>
                                                     <a href="#" data-id="{{ $item->id }}"
-                                                        data-url="{{ url('edit-surat-masuk/' . $item->id) }}"
+                                                         
                                                         class="btn btn-success btn-sm" id="editBtn" data-toggle="modal"
                                                         data-target=".edit"><i class="bi bi-pencil"></i></a>
                                                     <a href="{{ url('data-surat-masuk/view/' . $item->id) }}"

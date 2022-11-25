@@ -54,12 +54,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('data-surat-keluar/view/{id}' , 'SuratKeluarController@view');
     Route::post('save-surat-keluar' , 'SuratKeluarController@save');
     Route::get('surat-keluar/download/file/{id}' , 'SuratKeluarController@download');
+    Route::get('edit-surat-keluar/{id}' , 'SuratKeluarController@edit');
+    Route::post('update-surat-keluar' , 'SuratKeluarController@update');
 
     //jenissurat
     Route::get('jenis_surat' , 'JenisSuratController@index');
     Route::get('jenis_surat/hapus/{id}' , 'JenisSuratController@delete');
     Route::post('jenis_surat/save' , 'JenisSuratController@save');
     Route::post('jenis_surat/update' , 'JenisSuratController@update');
+
+    //
+    Route::get('laporan-surat-masuk' , 'ExportExcelController@suratmasuk');
+    Route::get('export-surat-masuk' , 'ExportExcelController@exportSuratMasuk');
 });
 
 
