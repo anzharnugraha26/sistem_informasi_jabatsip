@@ -34,10 +34,10 @@
                                                 <td>{{ $i->slot }}</td>
                                                 <td colspan="2">
 
-                                                    <a href="{{ url('kabinet/hapus/' . $i->id) }}"
+                                                    <a href="{{ url('kabinet/hapus/' . base64_encode($i->id)) }}"
                                                         onclick="return confirm('Are you sure, you want to delete it?')"
                                                         class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></a>
-                                                    <a href="{{ url('kabinet/edit/' . $i->id) }}"
+                                                    <a href="{{ url('kabinet/edit/' . base64_encode($i->id)) }}"
                                                         class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
 
                                                 </td>
@@ -49,7 +49,7 @@
                                     </tbody>
                                 </table>
                                 <div>
-                                    <p>Jumlah Data : {{$c}}</p>
+                                    <p>Jumlah Data : {{ $c }}</p>
                                 </div>
                             </div>
                             <!-- Table with stripped rows -->

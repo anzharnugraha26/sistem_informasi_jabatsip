@@ -53,7 +53,7 @@
                                     <tr>
                                         <td>Tanggal Terima</td>
                                         <td>:</td>
-                                        <td>{{ $s->tgl_surat }}</td>
+                                        <td>{{ $s->tgl_terima }}</td>
                                     </tr>
                                     <tr>
                                         <td>Kabinet</td>

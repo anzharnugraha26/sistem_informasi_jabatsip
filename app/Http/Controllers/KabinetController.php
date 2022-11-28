@@ -42,6 +42,7 @@ class KabinetController extends Controller
 
     public function edit($id)
     {
+        $id = base64_decode($id);
         $data['flag'] = 1;
         $data['k'] = DB::table('kabinet')->where('id', $id)->first();
         return view('kabinet.form', $data);

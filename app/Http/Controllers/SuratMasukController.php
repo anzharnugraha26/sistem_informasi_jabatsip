@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\SuratKeluar;
 use App\SuratMasuk;
 use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Http\Request;
@@ -33,23 +34,39 @@ class SuratMasukController extends Controller
         }
 
         $extension = $request->file->getClientOriginalExtension();
-
-        SuratMasuk::create([
-            'no_surat_masuk' => $request->no_surat_masuk,
-            'no_agenda' => $request->no_agenda,
-            'asal_surat' => $request->asal_surat,
-            'perihal_surat' => $request->perihal_surat,
-            'file' => $fileName,
-            'klasifikasi_surat' => $request->klasifikasi_surat,
-            'sifat_surat' => $request->sifat_surat,
-            'tgl_surat' => $request->tgl_surat,
-            'tgl_terima' => $request->tgl_terima,
-            'kabinet' => $request->kabinet,
-            'jenis_surat' => $request->jenis_surat,
-            'jenis_file' => $extension
-        ]);
-
-        return redirect()->back();
+        if ($request->klasifikasi_surat == "Surat Masuk") {
+             SuratMasuk::create([
+                'no_surat_masuk' => $request->no_surat_masuk,
+                'no_agenda' => $request->no_agenda,
+                'asal_surat' => $request->asal_surat,
+                'perihal_surat' => $request->perihal_surat,
+                'file' => $fileName,
+                'klasifikasi_surat' => $request->klasifikasi_surat,
+                'sifat_surat' => $request->sifat_surat,
+                'tgl_surat' => $request->tgl_surat,
+                'tgl_terima' => $request->tgl_terima,
+                'kabinet' => $request->kabinet,
+                'jenis_surat' => $request->jenis_surat,
+                'jenis_file' => $extension
+            ]);
+            return redirect('data-surat-masuk') ;
+        } else {
+            SuratKeluar::create([
+                'no_surat_keluar' => $request->no_surat_masuk,
+                'no_agenda' => $request->no_agenda,
+                'tujuan_surat' => $request->asal_surat,
+                'perihal_surat' => $request->perihal_surat,
+                'file' => $fileName,
+                'jenis_file' => $extension,
+                'klasifikasi_surat' => $request->klasifikasi_surat,
+                'sifat_surat' => $request->sifat_surat,
+                'tgl_surat' => $request->tgl_surat,
+                'tgl_terima' => $request->tgl_terima,
+                'kabinet' => $request->kabinet,
+                'jenis_surat' => $request->jenis_surat
+            ]);
+            return redirect('data-surat-keluar');
+        }
     }
 
     public function hapus($id)

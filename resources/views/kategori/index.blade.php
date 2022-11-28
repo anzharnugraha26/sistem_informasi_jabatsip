@@ -61,5 +61,9 @@
             </div>
         </section>
     </main>
-   
+    @if ($errors->has('file'))
+        <script>
+            alert("file hanya bisa berbentuk , pdf, jpeg, jpg, png")
+        </script>
+    @endif
 @endsection
