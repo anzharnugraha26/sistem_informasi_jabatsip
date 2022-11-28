@@ -17,7 +17,7 @@
                                 <table class="table datatable table-striped " id="tabel-data">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
+                                            <th scope="col">No</th>
                                             <th scope="col">Jenis Surat</th>
                                             <th scope="col">Aksi</th>
 

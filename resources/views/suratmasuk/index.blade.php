@@ -17,12 +17,12 @@
                                 <table class="table datatable table-striped " id="tabel-data">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
+                                            <th scope="col">No</th>
                                             <th scope="col">No Surat Masuk</th>
                                             <th scope="col">No Agenda</th>
                                             <th scope="col">Asal Surat</th>
                                             <th scope="col">Perihal Surat</th>
-                                            <th scope="col">Tanggal Terima</th>
+                                            {{-- <th scope="col">Tanggal Terima</th> --}}
 
                                             <th scope="col">Aksi</th>
 
@@ -36,7 +36,7 @@
                                                 <td>{{ $item->no_agenda }}</td>
                                                 <td>{{ $item->asal_surat }}</td>
                                                 <td>{{ $item->perihal_surat }}</td>
-                                                <td>{{ $item->tgl_terima }}</td>
+                                                {{-- <td>{{ $item->tgl_terima }}</td> --}}
 
                                                 <td colspan="3">
                                                     <a href="{{ url('surat-masuk/hapus/' . $item->id) }}"

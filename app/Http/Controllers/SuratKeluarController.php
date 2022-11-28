@@ -49,6 +49,7 @@ class SuratKeluarController extends Controller
 
     public function delete($id)
     {
+        $id = base64_decode($id);
         SuratKeluar::where('id', $id)->delete();
         return redirect()->back();
     }
@@ -58,8 +59,9 @@ class SuratKeluarController extends Controller
 
         // echo "ppppp";
         // die();
+        $id2 = base64_decode($id);
         $s = DB::table('surat_keluars as surat')
-            ->where('surat.id', $id)
+            ->where('surat.id', $id2)
             ->leftjoin('kabinet', 'surat.kabinet', '=', 'kabinet.id')
             ->leftjoin('jenis_surats as jenis', 'surat.jenis_surat', '=', 'jenis.id')
             ->select('surat.*', 'jenis.nama_jenis as jenis_surat', 'kabinet.kode_kabinet', 'kabinet.nama_kabinet', 'kabinet.slot')

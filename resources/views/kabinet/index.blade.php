@@ -19,7 +19,7 @@
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Kode Kabinet</th>
-                                            <th scope="col">Nama Kategori</th>
+                                            <th scope="col">Nama Kabinet</th>
                                             <th scope="col">Slot</th>
                                             <th scope="col">Aksi</th>
 

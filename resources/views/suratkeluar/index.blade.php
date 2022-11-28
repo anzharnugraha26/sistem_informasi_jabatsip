@@ -17,12 +17,12 @@
                                 <table class="table datatable table-striped " id="tabel-data">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
+                                            <th scope="col">No</th>
                                             <th scope="col">No Surat Masuk</th>
                                             <th scope="col">No Agenda</th>
                                             <th scope="col">Asal Surat</th>
                                             <th scope="col">Perihal Surat</th>
-                                            <th scope="col">Tanggal Terima</th>
+                                            {{-- <th scope="col">Tanggal Terima</th> --}}
 
                                             <th scope="col">Aksi</th>
 
@@ -36,17 +36,17 @@
                                                 <td>{{ $item->no_agenda }}</td>
                                                 <td>{{ $item->tujuan_surat }}</td>
                                                 <td>{{ $item->perihal_surat }}</td>
-                                                <td>{{ $item->tgl_terima }}</td>
+                                                {{-- <td>{{ $item->tgl_terima }}</td> --}}
 
                                                 <td colspan="3">
-                                                    <a href="{{ url('surat-keluar/hapus/' . $item->id) }}"
+                                                    <a href="{{ url('surat-keluar/hapus/' . base64_encode($item->id)) }}"
                                                         onclick="return confirm('Are you sure, you want to delete it?')"
                                                         class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></a>
                                                     <a href="#" data-id="{{ $item->id }}"
                                                         class="btn btn-success btn-sm" id="editBtn" data-toggle="modal"
                                                         data-target=".edit" class="btn btn-success btn-sm"><i
                                                             class="bi bi-pencil"></i></a>
-                                                    <a href="{{ url('data-surat-keluar/view/' . $item->id) }}"
+                                                    <a href="{{ url('data-surat-keluar/view/' . base64_encode($item->id)) }}"
                                                         class="btn btn-primary btn-sm"><i class="bi bi-eye-fill"></i></a>
 
                                                 </td>
@@ -102,7 +102,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-6 mb-2">
-                                        <label for="inputText" class="mb-2"> <b>No AgendaNo Agenda Tu Perssip</b> </label>
+                                        <label for="inputText" class="mb-2"> <b>No Agenda Tu Perssip</b> </label>
                                         <input type="text" class="form-control" name="no_agenda"
                                             value="{{ old('no_agenda') }}" required>
                                     </div>
@@ -251,6 +251,7 @@
                 });
             })
         })
+
         function hideDivFile(id, elementValue) {
             document.getElementById(id).style.display = elementValue.value == 1 ? 'block' : 'none';
         }
