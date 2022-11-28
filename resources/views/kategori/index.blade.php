@@ -32,10 +32,10 @@
                                                 <td>{{ $i->nama_kategori }}</td>
                                                 <td colspan="2">
 
-                                                    <a href="{{ url('kategori/hapus/' . $i->id) }}"
+                                                    <a href="{{ url('kategori/hapus/' . base64_encode($i->id)) }}"
                                                         onclick="return confirm('Are you sure, you want to delete it?')"
                                                         class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></a>
-                                                    <a href="{{ url('klasifikasi/edit/' . $i->id) }}"
+                                                    <a href="{{ url('klasifikasi/edit/' . base64_encode($i->id)) }}"
                                                         class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
 
                                                 </td>
@@ -47,7 +47,7 @@
                                     </tbody>
                                 </table>
                                 <div>
-                                    <p>Jumlah Data : {{$c}}</p>
+                                    <p>Jumlah Data : {{ $c }}</p>
                                 </div>
                             </div>
                             <!-- Table with stripped rows -->
@@ -61,4 +61,5 @@
             </div>
         </section>
     </main>
+   
 @endsection

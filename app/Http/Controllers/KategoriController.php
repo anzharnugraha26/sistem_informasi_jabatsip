@@ -22,23 +22,27 @@ class KategoriController extends Controller
 
     public function save(Request $request)
     {
-        // echo $request->kode_kategori;
-        // die();
+        $request->validate([
+            'nama_kategori' => 'required|max:15',
+            'kode_kategori' => 'required|max:15',
+        ]);
         DB::table('kategori')->insert([
             'kode_kategori' => $request->kode_kategori,
             'nama_kategori' => $request->nama_kategori,
         ]);
-        return redirect('kategori');
+        return redirect('klasifikasi');
     }
 
     public function delete($id)
     {
+        $id = base64_decode($id);
         DB::table('kategori')->where('id', $id)->delete();
         return redirect()->back();
     }
 
     public function edit($id)
     {
+        $id = base64_decode($id);
         $data['flag'] = 1;
         $data['k'] = DB::table('kategori')->where('id', $id)->first();
         return view('kategori.form', $data);
@@ -46,10 +50,14 @@ class KategoriController extends Controller
 
     public function update(Request $request)
     {
+        $request->validate([
+            'nama_kategori' => 'required|max:15',
+            'kode_kategori' => 'required|max:15',
+        ]);
         DB::table('kategori')->where('id', $request->id)->update([
             'kode_kategori' => $request->kode_kategori,
             'nama_kategori' => $request->nama_kategori,
         ]);
-        return redirect('kategori');
+        return redirect('klasifikasi');
     }
 }
