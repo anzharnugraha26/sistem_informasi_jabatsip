@@ -11,15 +11,15 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ url('kategori/tambah') }}" class="btn btn-primary  mt-3 mb-3"><i
+                            <a href="{{ url('klasifikasi    /tambah') }}" class="btn btn-primary  mt-3 mb-3"><i
                                     class="ri-add-box-fill"></i> Tambah Data</a>
                             <div class="table-responsive">
                                 <table class="table datatable table-striped " id="tabel-data">
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
-                                            <th scope="col">Kode Ketegori</th>
-                                            <th scope="col">Nama Kategori</th>
+                                            <th scope="col">Kode Klasifikasi</th>
+                                            <th scope="col">Nama Klasifikasi</th>
                                             <th scope="col">Aksi</th>
 
                                         </tr>
@@ -35,7 +35,7 @@
                                                     <a href="{{ url('kategori/hapus/' . $i->id) }}"
                                                         onclick="return confirm('Are you sure, you want to delete it?')"
                                                         class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></a>
-                                                    <a href="{{ url('kategori/edit/' . $i->id) }}"
+                                                    <a href="{{ url('klasifikasi/edit/' . $i->id) }}"
                                                         class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
 
                                                 </td>

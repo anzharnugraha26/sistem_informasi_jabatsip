@@ -16,10 +16,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('surat/update', 'SuratController@update');
     Route::get('surat/detail/{id}', 'SuratController@view');
     //kategori
-    Route::get('kategori', 'KategoriController@index');
-    Route::get('kategori/tambah', 'KategoriController@tambah');
+    Route::get('klasifikasi', 'KategoriController@index');
+    Route::get('klasifikasi/tambah', 'KategoriController@tambah');
     Route::get('kategori/hapus/{id}', 'KategoriController@delete');
-    Route::get('kategori/edit/{id}', 'KategoriController@edit');
+    Route::get('klasifikasi/edit/{id}', 'KategoriController@edit');
     Route::post('kategori/save', 'KategoriController@save');
     Route::post('kategori/update', 'KategoriController@update');
     //kabinet

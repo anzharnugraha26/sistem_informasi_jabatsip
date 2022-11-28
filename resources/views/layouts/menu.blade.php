@@ -1,5 +1,5 @@
 <?php
-$data = ['surat*', 'kategori*', 'kabinet*', 'user*' , 'jenis_surat*'];
+$data = ['surat*', 'kategori*', 'kabinet*', 'user*' , 'jenis_surat*' , 'klasifikasi*'];
 
 ?>
 
@@ -17,7 +17,7 @@ $data = ['surat*', 'kategori*', 'kabinet*', 'user*' , 'jenis_surat*'];
         <li class="nav-item">
             <a class="{{ request()->is($data) ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#components-nav"
                 data-bs-toggle="collapse" href="#">
-                <i class="bi bi-journal-text"></i><span>Data</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-journal-text"></i><span>Master Data</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="components-nav" class="nav-content collapse {{ request()->is($data) ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
@@ -27,7 +27,7 @@ $data = ['surat*', 'kategori*', 'kabinet*', 'user*' , 'jenis_surat*'];
                     </a>
                 </li> --}}
                 <li>
-                    <a href="{{ url('kategori') }}" class="{{ request()->is('kategori*') ? 'active' : '' }}">
+                    <a href="{{ url('klasifikasi') }}" class="{{ request()->is('klasifikasi*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Data Klasifikasi</span>
                     </a>
                 </li>
