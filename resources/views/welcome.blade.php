@@ -33,14 +33,16 @@
                                             <i class="bi bi-arrow-down-square-fill"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <?php $sc = DB::table('surat_masuks')->count(); ?>
+                                            <?php $sc = DB::table('data_surats')
+                                                ->where('klasifikasi_surat', 1)
+                                                ->count(); ?>
                                             <h6>{{ $sc }}</h6>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
-                        </div> 
+                        </div>
 
                         <div class="col-xxl-6 col-md-6">
                             <div class="card info-card sales-card">
@@ -56,14 +58,16 @@
                                             <i class="bi bi-arrow-up-square-fill"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <?php $sc = DB::table('surat_keluars')->count(); ?>
+                                            <?php $sc = DB::table('data_surats')
+                                                ->where('klasifikasi_surat', 2)
+                                                ->count(); ?>
                                             <h6>{{ $sc }}</h6>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
-                        </div> 
+                        </div>
 
                         <div class="col-xxl-6 col-md-6">
                             <div class="card info-card sales-card">
@@ -86,7 +90,7 @@
                                 </div>
 
                             </div>
-                        </div> 
+                        </div>
 
                         <div class="col-xxl-6 col-md-6">
                             <div class="card info-card sales-card">
@@ -109,17 +113,17 @@
                                 </div>
 
                             </div>
-                        </div> 
+                        </div>
 
-                        
-                        
+
+
                     </div>
                 </div><!-- End Left side columns -->
 
                 <!-- Right side columns -->
                 <div class="col-lg-4">
 
-                    
+
                 </div><!-- End Right side columns -->
 
             </div>

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class ExportSuratMasuk implements FromCollection ,  WithHeadings
+class ExportSuratMasuk implements FromCollection,  WithHeadings
 {
     private $date1;
     private $date2;
@@ -19,22 +19,24 @@ class ExportSuratMasuk implements FromCollection ,  WithHeadings
 
     public function collection()
     {
-        $records = DB::table('surat_masuks as surat')->select('*')
+        $records = DB::table('data_surats as surat')->select('*')
             ->where('surat.tgl_surat', '>=', $this->date1)
             ->where('surat.tgl_surat', '<=', $this->date2)
+            ->where('klasifikasi_surat',  1)
             ->join('kabinet', 'surat.kabinet', '=', 'kabinet.id')
             ->join('jenis_surats as jenis', 'surat.jenis_surat', '=', 'jenis.id')
-            ->select('surat.*', 'jenis.nama_jenis as jenis_surat', 'kabinet.kode_kabinet', 'kabinet.nama_kabinet', 'kabinet.slot')
+            ->join('kategori as kat', 'surat.klasifikasi_surat', '=', 'kat.id')
+            ->select('surat.*', 'jenis.nama_jenis as jenis_surat', 'kabinet.kode_kabinet', 'kabinet.nama_kabinet', 'kabinet.slot', 'kat.nama_kategori')
             ->get();
 
         $result = array();
         foreach ($records as $record) {
             $result[] = array(
-                'no_surat' => $record->no_surat_masuk,
+                'no_surat' => $record->no_surat,
                 'no_agenda' => $record->no_agenda,
                 'asal_surat' => $record->asal_surat,
                 'perihal_surat' => $record->perihal_surat,
-                'klasifikasi_surat' => $record->klasifikasi_surat,
+                'klasifikasi_surat' => $record->nama_kategori,
                 'sifat_surat' => $record->sifat_surat,
                 'tgl_surat' => $record->tgl_surat,
                 'tgl_terima' => $record->tgl_terima,

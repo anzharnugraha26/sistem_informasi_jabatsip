@@ -3,7 +3,11 @@
 
     <div class="row">
         <div class="col-md-6 mb-2">
-            <label for="inputText" class="mb-2"><b>No Surat Masuk</b> </label>
+            @if ($s->klasifikasi_surat == 1)
+                <label for="inputText" class="mb-2"><b>No Surat Masuk</b> </label>
+            @else
+                <label for="inputText" class="mb-2"><b>No Surat Keluar</b> </label>
+            @endif
             <input type="hidden" value="{{ $s->id }}" name="id">
             <input type="text" class="form-control" name="no_surat_masuk" value="{{ $s->no_surat }}" required>
         </div>
@@ -12,8 +16,7 @@
             <select class="form-select" aria-label="Default select example" name="klasifikasi_surat">
                 <?php $kl = DB::table('kategori')->get(); ?>
                 @foreach ($kl as $i)
-                    <option value="{{ $i->id }}"
-                        {{ $s->klasifikasi_surat == $i->id ? 'selected' : '' }}>
+                    <option value="{{ $i->id }}" {{ $s->klasifikasi_surat == $i->id ? 'selected' : '' }}>
                         {{ $i->nama_kategori }}</option>
                 @endforeach
 

@@ -11,9 +11,9 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ url('klasifikasi/tambah') }}" class="btn btn-primary  mt-3 mb-3"><i
-                                    class="ri-add-box-fill"></i> Tambah Data</a>
-                            <div class="table-responsive">
+                            {{-- <a href="{{ url('klasifikasi/tambah') }}" class="btn btn-primary  mt-3 mb-3"><i
+                                    class="ri-add-box-fill"></i> Tambah Data</a> --}}
+                            <div class="table-responsive mt-5">
                                 <table class="table datatable table-striped " id="tabel-data">
                                     <thead>
                                         <tr>
@@ -31,10 +31,10 @@
                                                 <td>{{ $i->kode_kategori }}</td>
                                                 <td>{{ $i->nama_kategori }}</td>
                                                 <td colspan="2">
-
-                                                    <a href="{{ url('kategori/hapus/' . base64_encode($i->id)) }}"
+                                                    
+                                                    {{-- <a href="{{ url('kategori/hapus/' . base64_encode($i->id)) }}"
                                                         onclick="return confirm('Are you sure, you want to delete it?')"
-                                                        class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></a>
+                                                        class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></a> --}}
                                                     <a href="{{ url('klasifikasi/edit/' . base64_encode($i->id)) }}"
                                                         class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
 

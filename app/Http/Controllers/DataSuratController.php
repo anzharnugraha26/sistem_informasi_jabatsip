@@ -91,6 +91,8 @@ class DataSuratController extends Controller
             ->select('surat.*', 'jenis.nama_jenis as jenis_surat', 'kabinet.kode_kabinet', 'kabinet.nama_kabinet', 'kabinet.slot')
             ->first();
 
+        
+
         return view('datasurat.edit', compact('s'));
     }
 

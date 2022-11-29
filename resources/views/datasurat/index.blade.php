@@ -81,7 +81,11 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Input Surat Masuk</h5>
+                            @if ($flag == 1)
+                                <h5 class="modal-title" id="exampleModalLabel">Input Surat Masuk</h5>
+                            @else
+                                <h5 class="modal-title" id="exampleModalLabel">Input Surat Keluar</h5>
+                            @endif
                             <a type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </a>
@@ -91,7 +95,11 @@
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-md-6 mb-2">
-                                        <label for="inputText" class="mb-2"><b>No Surat Masuk</b> </label>
+                                        @if ($flag == 1)
+                                            <label for="inputText" class="mb-2"><b>No Surat Masuk</b> </label>
+                                        @else
+                                            <label for="inputText" class="mb-2"><b>No Surat Keluar</b> </label>
+                                        @endif
                                         <input type="text" class="form-control" name="no_surat_masuk"
                                             value="{{ old('no_surat_masuk') }}" required>
                                     </div>
@@ -205,7 +213,11 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit Surat Masuk</h5>
+                            @if ($flag == 1)
+                                <h5 class="modal-title" id="exampleModalLabel">Edit Surat Masuk</h5>
+                            @else
+                                <h5 class="modal-title" id="exampleModalLabel">Edit Surat Keluar</h5>
+                            @endif
                             <a type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </a>
