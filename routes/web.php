@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('edit-surat/{id}', 'DataSuratController@edit');
     Route::post('update-surat', 'DataSuratController@update');
     Route::get('data-surat-keluar', 'DataSuratController@suratkeluar');
+    Route::get('data-surat-keluar/view/{id}', 'DataSuratController@view');
 
 
 
@@ -56,7 +57,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('surat-keluar/hapus/{id}', 'SuratKeluarController@delete');
-    Route::get('data-surat-keluar/view/{id}', 'SuratKeluarController@view');
     Route::post('save-surat-keluar', 'SuratKeluarController@save');
     Route::get('surat-keluar/download/file/{id}', 'SuratKeluarController@download');
     Route::get('edit-surat-keluar/{id}', 'SuratKeluarController@edit');

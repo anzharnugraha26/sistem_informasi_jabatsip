@@ -2,7 +2,11 @@
 @section('content')
     <main id="main" class="main">
         <div class="pagetitle">
-            <h1>Detail Surat Masuk</h1>
+            @if ($s->klasifikasi_surat == 1)
+                <h1>Detail Surat Masuk</h1>
+            @else
+                <h1>Detail Surat Keluar</h1>
+            @endif
         </div>
         <section class="section">
             <div class="row">
@@ -16,7 +20,11 @@
                             <div class="table-responsive">
                                 <table class="table table-striped mt-5">
                                     <tr>
-                                        <td>No Surat Masuk</td>
+                                        @if ($s->klasifikasi_surat == 1)
+                                            <td>No Surat Masuk</td>
+                                        @else
+                                            <td>Detail Surat Keluar</td>
+                                        @endif
                                         <td>:</td>
                                         <td>{{ $s->no_surat }}</td>
                                     </tr>

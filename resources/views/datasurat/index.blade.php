@@ -53,8 +53,15 @@
                                                     <a href="#" data-id="{{ $item->id }}"
                                                         class="btn btn-success btn-sm" id="editBtn" data-toggle="modal"
                                                         data-target=".edit"><i class="bi bi-pencil"></i></a>
-                                                    <a href="{{ url('data-surat-masuk/view/' . $item->id) }}"
-                                                        class="btn btn-primary btn-sm"><i class="bi bi-eye-fill"></i></a>
+                                                    @if ($item->klasifikasi_surat == 1)
+                                                        <a href="{{ url('data-surat-masuk/view/' . $item->id) }}"
+                                                            class="btn btn-primary btn-sm"><i
+                                                                class="bi bi-eye-fill"></i></a>
+                                                    @else
+                                                        <a href="{{ url('data-surat-keluar/view/' . $item->id) }}"
+                                                            class="btn btn-primary btn-sm"><i
+                                                                class="bi bi-eye-fill"></i></a>
+                                                    @endif
 
                                                 </td>
                                             </tr>
