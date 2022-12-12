@@ -79,4 +79,5 @@ Route::group(['middleware' => 'auth'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('test-excel-view' , 'HomeController@excel');
 Route::get('/log-out', 'HomeController@logout');

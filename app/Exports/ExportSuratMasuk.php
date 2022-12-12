@@ -19,7 +19,7 @@ class ExportSuratMasuk implements FromCollection,  WithHeadings
 
     public function collection()
     {
-        $records = DB::table('data_surats as surat')->select('*')
+        $records = DB::table('data_surats as surat')
             ->where('surat.tgl_surat', '>=', $this->date1)
             ->where('surat.tgl_surat', '<=', $this->date2)
             ->where('klasifikasi_surat',  1)
