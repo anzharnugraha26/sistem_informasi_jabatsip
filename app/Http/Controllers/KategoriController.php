@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataSurat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -59,5 +60,37 @@ class KategoriController extends Controller
             'nama_kategori' => $request->nama_kategori,
         ]);
         return redirect('klasifikasi');
+    }
+
+    public function api(Request $request)
+    {
+        DB::table('data_api')->insert([
+            'no' => $request->no,
+            'agenda' => $request->agenda,
+        ]);
+
+        return response([
+            'status' => 'ok'
+        ], 200);
+    }
+
+    public function data_api()
+    {
+        $data = DataSurat::all();
+
+        foreach ($data as $row) {
+            $no = $row->file;
+            $agenda = $row->no_agenda;
+            $dt['data'][] = [
+                "no" => $no,
+                'agenda' => $agenda
+            ];
+        }
+        print_r($dt);
+
+        // $header  = array("Authorization: Basic c2ltQHNlaWQ6ZFplaHdtWUtOQ1NaNVpTM3preEI=", "Content-Type: application/json");
+        DB::table('data_api')->insert($dt);
+
+       
     }
 }
